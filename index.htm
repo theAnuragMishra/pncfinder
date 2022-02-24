@@ -262,7 +262,7 @@
 
             if (value !== "select") {
 
-                if (n >= r && n > 0 && r > 0) {
+                if (n >= r && n >= 0 && r >= 0) {
                     var nfactorial = 1;
 
                     for (let i = 1; i <= n; i++) {
@@ -281,7 +281,7 @@
 
 
                     if (value == "p") {
-                        result = nfactorial / rfactorial;
+                        result = nfactorial / nrfactorial;
                     } else {
                         result = nfactorial / (rfactorial *
                             nrfactorial);
