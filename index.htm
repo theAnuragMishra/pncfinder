@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Poppins:wght@700&family=Shizuru&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permutations and Combinations Calculator</title>
+
+    <style>
+        body {
+            background: url('https://cdn.pixabay.com/photo/2021/03/16/12/03/woman-6099577_960_720.jpg') no-repeat 0 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background-color: rgb(0, 0, 0); */
+            color: rgb(255, 255, 255);
+            font-family: 'Shizuru', cursive;
+            text-align: center;
+
+        }
+
+        .intro {
+
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .main {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .n {
+            border: 2px solid rgb(90, 181, 209);
+            border-radius: 5px;
+            width: 12rem;
+            height: 2.5rem;
+            margin: 5px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .r {
+            border: 2px solid rgb(90, 181, 209);
+            border-radius: 5px;
+            width: 12rem;
+            height: 2.5rem;
+            margin: 5px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .vot {
+            border: 2px solid rgb(90, 181, 209);
+            border-radius: 5px;
+            width: 5rem;
+            height: 2.5rem;
+            margin: 5px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .getresult {
+            border: 2px solid rgb(90, 181, 209);
+            border-radius: 5px;
+            width: 12rem;
+            height: 2.8rem;
+            margin: 5px;
+            font-size: 2rem;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .getresult:hover {
+            background-color: bisque;
+            cursor: pointer;
+        }
+
+        .result {
+            width: 12rem;
+            height: 3rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 900;
+            color: beige;
+            background-color: rgb(208, 208, 233);
+            text-align: center;
+            margin-left: 663px;
+            margin-top: 42px;
+            font-size: xx-large;
+            color: black;
+            border-radius: 10px;
+        }
+
+        .advertisement {
+            font-family: 'Redressed', cursive;
+            font-size: 1.3rem;
+            margin-left: -15px;
+            margin-top: 150px;
+
+            margin-bottom: 200px;
+        }
+
+        .advertisement a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin: 2px;
+        }
+
+        .advertisement a:hover {
+            color: rgb(241, 231, 252)
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="intro">
+        <h2>Find the number of permutations and combinations with ease.</h2>
+    </div>
+    <div class="main" id="main">
+        <div><input type="number" name="n" id="n" placeholder="n" class="n"></div>
+        <div><select class="vot" id="vot">
+                <option value="p">p</option>
+                <option value="c">c</option>
+            </select></div>
+        <div><input type="number" name="r" id="r" placeholder="r" class="r"></div>
+        <div>
+            <button type="button" onclick="getresult()" class="getresult">Get result</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <div class="advertisement">
+        <h3><a target="blank" href="https://www.youtube.com/channel/UC9DloEs6b9xLwtQQTe0F32g">->Explore my
+                chess
+                channel!</a>
+            <a target="blank" href="https://twitter.com/mishra_anurag_1">->Here's my twitter!</a>
+            <a target="blank" href="https://lichess.org/@/xXAnuragXx">->Play with me on Lichess!</a>
+
+            <a target="blank" href="https://chess.com/xxAnuragxx">->Play with me on Chess.com!</a> </h3>
+    </div>
+
+    <embed src="https://open.spotify.com/track/0k5hoseEJnCAbpRh38dNoI?si=17aa41ecd42646a8" autostart loop></embed>
+
+    <script>
+        function getresult() {
+            var n = document.getElementById('n').value;
+            var r = document.getElementById('r').value;
+            var vot = document.getElementById('vot').value;
+            var nfactorial = 1;
+
+            for (let i = 1; i <= n; i++) {
+                nfactorial = nfactorial * i;
+            }
+            var rfactorial = 1;
+            for (let j = 1; j <= r; j++) {
+                rfactorial = rfactorial * j;
+            }
+            var nrfactorial = 1;
+            for (let k = 1; k <= (n - r); k++) {
+                nrfactorial = nrfactorial * k;
+            }
+            var value = document.getElementById('vot').value;
+            var result;
+            if (value == "p") {
+                result = nfactorial / rfactorial;
+            } else {
+                result = nfactorial / (rfactorial *
+                    nrfactorial);
+            }
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>
