@@ -101,20 +101,22 @@
         }
 
         .result {
-            width: 16rem;
+            width: 25rem;
             height: 3rem;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-weight: 900;
             color: beige;
             background-color: rgb(208, 208, 233);
             text-align: center;
-            margin-left: 590px;
+            margin-left: 515px;
 
             font-size: xx-large;
             color: black;
             border-radius: 10px;
-            display: flex;
+            display: block;
             margin-top: 20px;
+            display: flex;
+            text-align: center;
 
         }
 
@@ -167,6 +169,28 @@
         .note ol li {
             margin-left: 616px;
         }
+
+        .scode {
+
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            font-size: larger;
+            display: flex;
+            position: fixed;
+            top: 15px;
+            right: 20px;
+
+        }
+
+        .scode a {
+            text-decoration: none;
+            color: white;
+
+        }
+
+        .scode a:hover {
+            color: rgb(241, 231, 252)
+        }
     </style>
 
 </head>
@@ -184,7 +208,7 @@
 
             <li>
                 <div><select class="vot" id="vot">
-                        <option>Select</option>
+                        <option value="select">Select</option>
                         <option value="p">p</option>
                         <option value="c">c</option>
                     </select></div>
@@ -198,22 +222,28 @@
                 </div>
             </li>
 
+
             <div class="result" id="result"></div>
+
         </ul>
 
     </div>
 
     <div class="note">
         <p>RIP those who think they need to use calculator for calculating nPr or nCr where r>n.<br><br>
-            Thanks to following people who helped me in building this project. <br>The following people: <ol type="1">
+            Thanks to the following people who helped me in building this project. <br>The following people: <ol
+                type="1">
                 <li></li>
                 <li></li>
 
             </ol>
         </p>
     </div>
-
+    <div class="scode"><a target="blank"
+            href="https://drive.google.com/drive/folders/1Hq6BphyhF68L1P-DP6D9u3xAEdsKThhU?usp=sharing">Source Code
+            here!</a></div>
     <div class="footer">
+
         <h3><a target="blank" href="https://www.youtube.com/channel/UC9DloEs6b9xLwtQQTe0F32g">->Explore my
                 chess
                 channel!</a>
@@ -223,34 +253,50 @@
             <a target="blank" href="https://chess.com/xxAnuragxx">->Play with me on Chess.com!</a> </h3>
     </div>
 
-    <!-- <embed src="https://open.spotify.com/track/0k5hoseEJnCAbpRh38dNoI?si=17aa41ecd42646a8" autostart loop></embed> -->
 
     <script>
         function getresult() {
             var n = document.getElementById('n').value;
             var r = document.getElementById('r').value;
-            var vot = document.getElementById('vot').value;
-            var nfactorial = 1;
-
-            for (let i = 1; i <= n; i++) {
-                nfactorial = nfactorial * i;
-            }
-            var rfactorial = 1;
-            for (let j = 1; j <= r; j++) {
-                rfactorial = rfactorial * j;
-            }
-            var nrfactorial = 1;
-            for (let k = 1; k <= (n - r); k++) {
-                nrfactorial = nrfactorial * k;
-            }
             var value = document.getElementById('vot').value;
-            var result;
-            if (value == "p") {
-                result = nfactorial / rfactorial;
+
+            if (value !== "select") {
+
+                if (n >= r && n > 0 && r > 0) {
+                    var nfactorial = 1;
+
+                    for (let i = 1; i <= n; i++) {
+                        nfactorial = nfactorial * i;
+                    }
+                    var rfactorial = 1;
+                    for (let j = 1; j <= r; j++) {
+                        rfactorial = rfactorial * j;
+                    }
+                    var nrfactorial = 1;
+                    for (let k = 1; k <= (n - r); k++) {
+                        nrfactorial = nrfactorial * k;
+                    }
+
+                    var result;
+
+
+                    if (value == "p") {
+                        result = nfactorial / rfactorial;
+                    } else {
+                        result = nfactorial / (rfactorial *
+                            nrfactorial);
+                    }
+                } else {
+                    result = 0;
+                }
+
             } else {
-                result = nfactorial / (rfactorial *
-                    nrfactorial);
+                result = "Select the operation";
             }
+
+            var resultbox = document.getElementById('result');
+            resultbox.setAttribute('style', 'text-align: center; display:block;');
+
             document.getElementById('result').innerHTML = result;
         }
     </script>
